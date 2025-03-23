@@ -10,8 +10,8 @@ import java.time.LocalDate;
 public class Visit {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long ID;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String visitID;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "patientID", referencedColumnName = "patientID")
@@ -32,8 +32,8 @@ public class Visit {
 
     public Visit() {}
 
-    public Visit(long ID, Patient patient, Doctor doctor, LocalDate dateOfVisit, String symptoms, int diagnosis) {
-        this.ID = ID;
+    public Visit(String visitID, Patient patient, Doctor doctor, LocalDate dateOfVisit, String symptoms, int diagnosis) {
+        this.visitID = visitID;
         this.patient = patient;
         this.doctor = doctor;
         this.dateOfVisit = dateOfVisit;
@@ -42,6 +42,7 @@ public class Visit {
     }
 
     //Getters
+    public String getVisitID() { return visitID; }
     public Patient getPatient() { return patient; }
     public Doctor getDoctor() { return doctor; }
     public LocalDate getDateOfVisit() { return dateOfVisit; }
@@ -49,6 +50,7 @@ public class Visit {
     public int getDiagnosis() { return diagnosis; }
 
     //Setters
+    public void setVisitID(String visitID) { this.visitID = visitID; }
     public void setPatient(Patient patient) { this.patient = patient; }
     public void setDoctor(Doctor doctor) { this.doctor = doctor; }
     public void setDateOfVisit(LocalDate dateOfVisit) { this.dateOfVisit = dateOfVisit; }

@@ -48,10 +48,11 @@ public class Start implements ApplicationRunner {
                 stmt.close();
             } catch (SQLException e) {
                 System.err.println("Error fetching tables: " + e.getMessage());
-            } finally {
-                // Close the database connection
-                Database.closeConnection(conn);
             }
+//            finally {
+//                // Close the database connection
+//                Database.closeConnection(conn);
+//            }
         }
     }
 }
